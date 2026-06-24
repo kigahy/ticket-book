@@ -17,7 +17,7 @@ public class SecurityConfig {
             .formLogin(form -> form.disable()) // 폼 로그인 끄기
             .httpBasic(httpBasic -> httpBasic.disable()) // Basic 로그인 끄기
             .authorizeHttpRequests(auth -> auth
-                    .requestMatchers("/api/members/signup").permitAll() // 회원가입 API 허용
+                    .requestMatchers("/api/members/signup", "/api/auth/login").permitAll() // 회원가입,로그인 API 허용
                     .anyRequest().permitAll() // 나머지도 개발 중이라 일단 허용
             /*
             공식문서 내용

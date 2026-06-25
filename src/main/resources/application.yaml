@@ -18,4 +18,4 @@ spring:
 
 jwt:
   secret : ${JWT_SECRET_KEY}
-  expiration_access: 600000 # 테스트용 1분
+  expiration-time: 600000 # 테스트용 1분

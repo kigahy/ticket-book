@@ -43,6 +43,14 @@ dependencies {
 
     // env파일 읽기
     implementation 'me.paulschwarz:spring-dotenv:4.0.0'
+
+    // jwt 관련 설정
+    implementation 'io.jsonwebtoken:jjwt-api:0.12.6' //jjwt api
+
+    // jjwt 구현체 및 json 파서(런타임 필수)
+    runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.12.6'
+    runtimeOnly 'io.jsonwebtoken:jjwt-jackson:0.12.6' // JSON 변환 라이브러리
+
 }
 
 tasks.named('test') {

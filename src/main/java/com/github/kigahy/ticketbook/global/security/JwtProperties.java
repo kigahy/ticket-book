@@ -14,6 +14,7 @@ import org.springframework.stereotype.Component;
 @ConfigurationProperties(prefix = "jwt")
 public class JwtProperties {
 
-    // secret은 일개 변수가 아니라 jwt그룹 안의 secret 키를 찾아냄
+    // secret은 일개 변수가 아니라 jwt그룹 안의 secret 키 및 만료시간을 찾아냄
     private String secret;
+    private Long expiration_time;
 }

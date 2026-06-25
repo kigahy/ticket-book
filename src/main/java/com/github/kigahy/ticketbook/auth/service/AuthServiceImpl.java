@@ -2,6 +2,7 @@ package com.github.kigahy.ticketbook.auth.service;
 
 import com.github.kigahy.ticketbook.auth.dto.request.LoginRequest;
 import com.github.kigahy.ticketbook.auth.dto.response.LoginResponse;
+import com.github.kigahy.ticketbook.global.security.JwtUtil;
 import com.github.kigahy.ticketbook.member.entity.Member;
 import com.github.kigahy.ticketbook.member.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
@@ -15,6 +16,7 @@ public class AuthServiceImpl implements AuthService{
     // 의존성 주입
     private final MemberRepository memberRepository;
     private final PasswordEncoder passwordEncoder;
+    private final JwtUtil jwtUtil;
 
     @Override
     public LoginResponse login(LoginRequest request) {
@@ -29,12 +31,16 @@ public class AuthServiceImpl implements AuthService{
             throw new IllegalArgumentException("비밀번호가 일치하지 않습니다.");
         }
 
+        // JWT인증과정 추가한 다음 return에 엑세스토큰 추가
+        String accessToken = jwtUtil.generateAccessToken(member);
+
         // LoginResponse에 해당하는 member의 정보를 넣음
         // Response클래스는 Id가 아니라 MemberId로 되어있지만 문제없음. Return하는 순서대로 잘 매치 됨
         return new LoginResponse(
                 member.getId(),
                 member.getEmail(),
-                member.getName()
+                member.getName(),
+                accessToken
         );
     }
 

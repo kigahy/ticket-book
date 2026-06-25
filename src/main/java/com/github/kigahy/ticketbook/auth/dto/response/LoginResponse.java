@@ -13,4 +13,5 @@ public class LoginResponse {
     private Long memberId;
     private String email;
     private String name;
+    private String accessToken; // jwt토큰이 추가됨
 }

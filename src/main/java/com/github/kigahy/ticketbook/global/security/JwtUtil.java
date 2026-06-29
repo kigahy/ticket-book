@@ -62,6 +62,18 @@ public class JwtUtil {
         } catch (JwtException | IllegalArgumentException e) {
             return false;
         }
+    }
+
+    // 들어온 로그인 요청으로부터 사용자의 Id정보를 받아오는 메서드
+    public Long getmemberIdFromToken(String accessToken) {
+        String memberId = Jwts.parser()
+            .verifyWith(getAuthKey()) // 생성했던 AuthKey와 멤버Id의 AuthKey가 맞는지 확인
+            .build()
+            .parseSignedClaims(accessToken)
+            .getPayload()
+            .getSubject();
+
+        return Long.parseLong(memberId);
 
     }
 }

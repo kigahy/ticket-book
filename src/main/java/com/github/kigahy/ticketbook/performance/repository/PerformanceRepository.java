@@ -10,6 +10,7 @@ public interface PerformanceRepository extends JpaRepository<Performance, Long> 
 
     // 예매 가능 상태인 공연만 날짜 순으로 고속 조회
     // 너무 길어서 필요 시 줄임
+    // findByStatusOrderByReservationTimeAsc
     List<Performance> findByStatusOrderByReservationTimeAsc(Status status);
 
     // 필요 시 복합 인덱스 처리 추가

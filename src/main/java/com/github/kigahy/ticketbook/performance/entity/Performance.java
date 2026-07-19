@@ -11,8 +11,8 @@ import java.time.LocalDateTime;
 @Getter
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@Table(name = "performance_table", indexes = {
-        @Index(name = "idx_reservation_time", columnList = "reservation_time")
+@Table(name = "performance", indexes = {
+        @Index(name = "idx_reserve_time", columnList = "reserve_time")
 })
 
 public class Performance {
@@ -26,7 +26,7 @@ public class Performance {
     private String title;
 
     // 예매 시작일
-    @Column(name = "reservation_time")
+    @Column(name = "reserve_time")
     private LocalDateTime reserveTime;
 
     // 공연 시작일
@@ -37,9 +37,9 @@ public class Performance {
     @Column(name = "status")
     private Status status;
 
-    public Performance(String title, LocalDateTime reservationTime, LocalDateTime startTime, Status status) {
+    public Performance(String title, LocalDateTime reserveTime, LocalDateTime startTime, Status status) {
         this.title = title;
-        this.reserveTime = reservationTime;
+        this.reserveTime = reserveTime;
         this.startTime = startTime;
         this.status = status;
     }

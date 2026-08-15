@@ -16,7 +16,7 @@ public class PerformanceResponse {
     private String title;
     private LocalDateTime reserveTime;
     private LocalDateTime startTime;
-    private Status status;
+    private Status Status;
 
     // 유지보수성을 위한 from
     // 서비스로직에서 람다식 말고 간단히 사용 가능

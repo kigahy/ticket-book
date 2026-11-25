@@ -7,5 +7,6 @@ import java.util.List;
 public interface PerformanceService {
 
     List<PerformanceResponse> getAllPerformances(); // 전체 공연 조회
+    PerformanceResponse getPerformance(Long performanceId); //단일 공연 조회
     List<PerformanceResponse> getBookablePerformances(); // 예매중인 공연 조회
 }

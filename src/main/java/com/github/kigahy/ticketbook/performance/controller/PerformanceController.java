@@ -5,10 +5,7 @@ import com.github.kigahy.ticketbook.performance.dto.PerformanceResponse;
 import com.github.kigahy.ticketbook.performance.service.PerformanceService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -23,6 +20,16 @@ public class PerformanceController {
     @GetMapping("/shows")
     public ResponseEntity<List<PerformanceResponse>> getAllPerformances() {
         return ResponseEntity.ok(performanceService.getAllPerformances());
+    }
+
+    @GetMapping("/{performanceId}")
+    public ResponseEntity<PerformanceResponse> gerPerformance(
+            @PathVariable Long performanceId) {
+
+        PerformanceResponse response =
+                performanceService.getPerformance(performanceId);
+
+        return ResponseEntity.ok(response);
     }
 
 }

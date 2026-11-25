@@ -3,6 +3,7 @@ package com.github.kigahy.ticketbook.performance.service;
 import com.github.kigahy.ticketbook.performance.dto.PerformanceResponse;
 import com.github.kigahy.ticketbook.performance.entity.Performance;
 import com.github.kigahy.ticketbook.performance.repository.PerformanceRepository;
+import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -26,6 +27,15 @@ public class PerformanceServiceImpl implements PerformanceService {
         .stream()
         .map(PerformanceResponse::from)
         .toList();
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public PerformanceResponse getPerformance(Long performanceId){
+        Performance performance = performanceRepository.findById(performanceId)
+            .orElseThrow(() -> new EntityNotFoundException("공연을 찾을 수 없습니다."));
+
+        return PerformanceResponse.from(performance);
     }
 
     @Override

@@ -69,7 +69,11 @@ public class Performance {
         }
 
         // 공연 시작 시간을 지났거나 남은 좌석이 없음
-        if (now.isAfter(this.startTime) || this.remainSeats <= 0) {
+        if (now.isAfter(this.startTime)) {
+            return Status.CLOSED;
+        }
+
+        if (this.remainSeats <= 0) {
             return Status.SOLD_OUT;
         }
 

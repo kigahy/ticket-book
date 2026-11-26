@@ -22,7 +22,9 @@ public class JwtFilter extends OncePerRequestFilter {
 
     // 요청에 들어오는 헤더와 bearer. 이건 jwt에서 제공하는 기본 기능임. 바꿔지 않음
     private static final String AUTHORIZATION_HEADER = "Authorization";
-    private static final String BEARER_PREFIX = "Bearer";
+
+    // 반드시 Bearer 뒤 !!공백!! 붙여서 ""로 묶기!!!!!
+    private static final String BEARER_PREFIX = "Bearer ";
 
     // jwt유틸 의존성 주입도
     private final JwtUtil jwtUtil;
